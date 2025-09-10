@@ -10,6 +10,7 @@ package com.mycompany.calculadora;
  */
 import java.net.*;
 import java.io.*;
+import java.util.Arrays;
 import java.util.LinkedList;
 
 public class HttpServer {
@@ -60,7 +61,7 @@ public class HttpServer {
                     + "<body>\n"
                     + "<h1>Mi propio mensaje</h1>\n"
                     + "        <form action=\"/hello\">\n"
-                    + "        <label for=\"num\">Numero:</label><br>\n"
+                    + "        <label for=\"num\">add numero:</label><br>\n"
                     + "        <input type=\"text\" id=\"num\" num=\"num\"><br><br>\n"
                     + "        <input type=\"button\" value=\"Submit\" onclick=\"loadGetMsg()\">\n </form>"
                     + "<script>\n"
@@ -71,23 +72,25 @@ public class HttpServer {
                     + "                document.getElementById(\"getrespmsg\").innerHTML =\n"
                     + "                    this.responseText;\n"
                     + "            }\n"
-                    + "            xhttp.open(\"GET\", \"/add=\" + numVar);\n"
+                    + "            xhttp.open(\"POST\", \"/add?value=\" + numVar);\n"
                     + "            xhttp.send();\n"
                     + "        }\n"
+                    + "         "
                     + "    </script>"
                     + "</body>\n"
                     + "</html>\n";
             out.println(outputLine);
+            System.out.println(Arrays.toString(inputLine.split("=")));
             get();
-            add();
             List();
+            add(2.2);
 
         }
     }
 
-    public static void add() {
-        
-
+    public static void add(Double e) {
+        lista.add(e);
+        System.out.println(lista);
     }
 
     public static void get() throws ProtocolException, MalformedURLException, IOException {
