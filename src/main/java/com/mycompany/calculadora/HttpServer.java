@@ -45,6 +45,8 @@ public class HttpServer {
             String inputLine, outputLine;
             while ((inputLine = in.readLine()) != null) {
                 System.out.println("Recibí: " + inputLine);
+                String[] split = inputLine.split("=");
+                System.out.println(Arrays.toString(split));
                 if (!in.ready()) {
                     break;
                 }
@@ -80,7 +82,6 @@ public class HttpServer {
                     + "</body>\n"
                     + "</html>\n";
             out.println(outputLine);
-            System.out.println(Arrays.toString(inputLine.split("=")));
             get();
             List();
             add(2.2);
@@ -125,5 +126,7 @@ public class HttpServer {
         json = "{\"list\":" + lista.toString() + "}";
         System.out.println(json);
     }}
+    
+    
     
 }
